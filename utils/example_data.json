@@ -1,0 +1,13 @@
+{
+"kind" : "object#",
+"type" : "ethernet",
+"if-name" : "gigabitEthernet1",
+"description" : "outside ",
+"ip-address" : "172.15.15.15",
+"subnet-mask" : "255.255.254.0",
+"nat-direction" : "outside",
+"icmp-redirects" : true,
+"icmp-unreachable" : true,
+"proxy-arp" : true,
+"verify-unicast-source": true
+}
