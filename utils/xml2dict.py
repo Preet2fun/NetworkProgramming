@@ -23,3 +23,10 @@ for ele in element:
 
 for ele in element_int:
 	print xml2dict['interface-configuration']['ipv4-network']['addresses']['primary'][ele]
+
+#changing element in XML file by assigning its value
+xml2dict['interface-configuration']['ipv4-network']['addresses']['primary']['address'] = '10.10.10.1'
+
+# updating xml file using newly changed element using unparse method
+new_xml_data = xmltodict.unparse(xml2dict)
+print new_xml_data
