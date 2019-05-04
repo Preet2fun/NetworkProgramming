@@ -1,1 +1,19 @@
-1
+ xmltodict - 3:30
+  - json - 8:14
+  - PyYAML - 11:21
+  - csv - 14:27
+  - pyang - 18:05
+- API Libraries - 23:42
+  - requests & RESTCONF - 24:20
+  - ncclient & NETCONF - 32:56
+  - netmiko & CLI - 39:21
+  - pysnmp & SNMP - 44:03
+- Configuration Management Tools - 46:26
+  - NAPALM - 47:52
+  - Ansible - 48:58
+- Other Cool Python Tools - 49:51
+  - virlutils - 49:53
+  - pyATS - 51:45
+- Summary - 52:59
+  - Webinar Resources - 54:03
+  - Code Exchange Challenge - 54:391
