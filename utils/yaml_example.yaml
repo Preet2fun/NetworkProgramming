@@ -1,0 +1,8 @@
+---
+interface:
+  name: xe-0/0/0
+  shutdown: false
+  subinterfaces:
+    xe-0/0/0.0:
+      ipv4:
+        address: 172.17.17.1/24
