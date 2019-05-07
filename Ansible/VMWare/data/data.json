@@ -1,0 +1,5 @@
+vcenter_ip : "172.16.10.160"
+vcenter_username : "qa@vsphere.local" 
+vcenter_password : "Mind@123"
+datacenter_name : "Datacenter"
+cluster_name : "QACluster"

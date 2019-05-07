@@ -1,0 +1,7 @@
+plugin: vmware_vm_inventory
+strict: False
+hostname: 172.16.10.160
+username: qa@vsphere.local
+password: Mind@123
+validate_certs: False
+with_tags: True

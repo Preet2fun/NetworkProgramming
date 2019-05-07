@@ -1,0 +1,25 @@
+---
+- name: Create VM from templete
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Include all .json and .jsn files in vars/all and all nested directories (2.3)
+      include_vars:
+       dir: /home/pratik/CiscoDevNet/Ansible/VMWare/data
+       extensions:
+        - json
+        - jsn
+
+    - name: Clone the template
+      vmware_guest:
+       hostname: "{{ vcenter_ip }}"
+       username: "{{ vcenter_username }}"
+       password: "{{ vcenter_password }}"
+       validate_certs: False
+       name: testvm_2
+       template: CentOS_QA
+       datacenter: "{{ datacenter_name }}"
+       folder: /
+       state: poweredon
+       cluster: "{{ cluster_name }}"
+       wait_for_ip_address: no
