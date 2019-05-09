@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: no
   tasks:
-    - name: Include all .json and .jsn files in vars/all and all nested directories (2.3)
+    - name: Include all .json and .jsn files in define directory
       include_vars:
        dir: /home/pratik/CiscoDevNet/Ansible/VMWare/data
        extensions:
@@ -16,10 +16,20 @@
        username: "{{ vcenter_username }}"
        password: "{{ vcenter_password }}"
        validate_certs: False
-       name: testvm_2
+       name: testvm_4
        template: CentOS_QA
        datacenter: "{{ datacenter_name }}"
        folder: /
        state: poweredon
        cluster: "{{ cluster_name }}"
        wait_for_ip_address: no
+      register: deploy_vm
+    
+    - debug: 
+       var: deploy_vm
+
+
+
+#Ansible utilizes the VMware API to perform actions, in this use case we will be connecting directly to the API from our localhost. This means that our playbooks will not be running from #the vCenter or ESXi Server.
+#folder ---> you can specify a folder to place this new virtual machine in. This path can either be a relative path or a full path to the folder including the Datacenter
+# An optional parameter is wait_for_ip_address, this will tell Ansible to wait for the virtual machine to fully boot up and VMware Tools is running before completing this task.
