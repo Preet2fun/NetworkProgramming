@@ -1,0 +1,4 @@
+---
+  - hosts: test
+    gather_facts: true
+    gather_subset: hardware

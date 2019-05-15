@@ -16,7 +16,7 @@
        username: "{{ vcenter_username }}"
        password: "{{ vcenter_password }}"
        validate_certs: False
-       name: testvm_4
+       name: testvm_5
        template: CentOS_QA
        datacenter: "{{ datacenter_name }}"
        folder: /
@@ -26,7 +26,8 @@
       register: deploy_vm
     
     - debug: 
-       var: deploy_vm
+#       var: deploy_vm
+       msg: "VM created on {{ deploy_vm.instance.hw_esxi_host }}"
 
 
 
