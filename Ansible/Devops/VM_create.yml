@@ -1,0 +1,47 @@
+---
+- name: Upload ISO to datastore and create VM
+  hosts: localhost
+  tasks:
+   - name: Create a virtual machine
+     vmware_guest:
+       hostname: "172.16.10.160"
+       username: "qa@vsphere.local"
+       password: 'Mind@123'
+       validate_certs: no
+       datacenter: "Datacenter"
+       folder: /
+       name: 'Test82345'
+       state: poweredon
+       guest_id: CentOS64Guest
+       cluster: "QACluster"
+#          esxi_hostname: "172.16.10.21"
+       disk:
+       - size_gb: 30
+         type: thin
+         datastore: "datastore1 (3)"
+#        autoselect_datastore: True
+       hardware:
+         memory_mb: 1024
+         num_cpus: 2
+         num_cpu_cores_per_socket: 1
+         scsi: lsilogic
+       cdrom:
+         type: iso
+         iso_path: "[Prod-VMs-Data] Ronak/OS ISOs/CentOS-7-x86_64-Minimal-1708(1).iso"
+       networks:
+       - name: VM Network
+         device_type: vmxnet3
+#    wait_for_ip_address: yes
+#     with_random_choice:
+#       - "datastore1 (3)"
+#       - "datastore1 (5)"
+#       - "datastore1 (1)"
+#       when: vmexist is failed  
+     register: deploy_vm
+
+   - debug: 
+#       var: deploy_vm   
+       msg: "VM created on {{ deploy_vm.instance.hw_esxi_host }}"
+#       msg: "VM created on {{ deploy_vm }}"
+#     when: vmexist is failed
+     when: deploy_vm is success

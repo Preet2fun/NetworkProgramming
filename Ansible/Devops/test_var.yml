@@ -1,0 +1,18 @@
+---
+- name: variable testing
+  hosts: Test
+  vars_files:
+  - [ "apache_{{ ansible_os_family }}.yml", "data.yml" ]
+
+  tasks:
+  - name: display variable name
+    command: "ip a"
+    register: ansible_eth0
+  - debug: msg="{{ansible_eth0.delta}}"
+
+ #- debug: msg="variable name is {{name}}"
+ #- debug: msg="vatiable name is {{team}} and {{team1}}"
+
+
+#usage : ansible-playbook test_var.yml --extra-vars "name=pratik"
+#ansible-playbook test_var.yml --extra-vars "@data.yml"

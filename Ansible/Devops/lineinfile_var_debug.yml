@@ -1,0 +1,17 @@
+---
+- name: this playbook is used for inline, debig and variable
+  hosts: Test
+  tasks: 
+  - name: add variable value in line
+    lineinfile: dest=/home/pratik/Test.json regexp=^'IP'= line='IP'='10.10.10.10'
+    register: ip_address
+  
+  - name: Get the value of the environment variable we just added.
+    shell: 'echo $ENV_VAR'
+    register: foo
+ 
+  - debug: msg="{{item}}"
+  
+    with_items:
+     - "{{ip_address}}"
+     - "{{foo.stdout}}"
